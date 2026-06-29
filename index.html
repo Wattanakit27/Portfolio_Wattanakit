@@ -194,6 +194,24 @@
   .flow i{color:var(--accent);font-weight:800;font-style:normal;margin:0 6px}
   .flow b{color:var(--text);font-weight:700}
 
+  /* collapsible web-app cards (accordion) */
+  .appacc{margin-bottom:14px}
+  .appacc>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;
+    padding:13px 18px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:.18s}
+  .appacc>summary::-webkit-details-marker{display:none}
+  .appacc>summary:hover{background:var(--card-hover);border-color:var(--accent)}
+  .appacc[open]>summary{border-color:var(--accent);border-bottom-left-radius:0;border-bottom-right-radius:0}
+  .appacc-thumb{width:82px;height:52px;object-fit:cover;object-position:top center;border-radius:8px;
+    border:1px solid var(--border);flex-shrink:0;background:#eef1f6}
+  .appacc-tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .appacc-tt b{font-size:15px;font-weight:800;color:var(--text)}
+  .appacc-tt i{font-size:12px;font-style:normal;color:var(--muted)}
+  .appacc-chev{font-size:15px;color:var(--muted);transition:transform .25s;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  .appacc[open] .appacc-chev{transform:rotate(180deg)}
+  .appacc .proj.wide{border-top:none;border-top-left-radius:0;border-top-right-radius:0}
+  .appacc .proj .top{display:none}
+  @media(max-width:520px){.appacc-thumb{width:60px;height:40px}}
+
   /* about n8n panel */
   .n8n-about{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:26px;position:relative;overflow:hidden}
   .n8n-about::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:#ea4b71}
@@ -522,7 +540,9 @@
     <span class="en-only block">End-to-end <b style="color:var(--accent2)">Django</b> web apps — data model, backend, UI and deployment built solo. Server-rendered, multi-role permissions, integrated with LINE and Google Sheets.</span>
   </p>
 
-  <div class="grid">
+  <details class="appacc">
+    <summary class="appacc-head"><img class="appacc-thumb" src="img/app-dashboard.png" alt="" loading="lazy"><span class="appacc-tt"><b>Oxlet Auto — Car Tracking System</b><i>Django · ติดตามรถ + QR + กำไรต่อคัน (P&amp;L)</i></span><span class="appacc-chev">⌄</span></summary>
+    <div class="grid">
     <!-- oxletautocar -->
     <div class="proj wide">
       <a class="app-shot" href="img/app-dashboard.png" target="_blank" rel="noopener"><span class="badge">Django</span><img src="img/app-dashboard.png" loading="lazy" alt="Oxlet Auto car-tracking executive dashboard"><span class="zoom">⤢ full</span></a>
@@ -545,11 +565,12 @@
     <figure><img src="img/app-accounting.png" alt="Executive accounting screen" loading="lazy"></figure>
     <figure><img src="img/app-scan.png" alt="Mobile QR-scan stage-change flow" loading="lazy"></figure>
   </div>
+  </details>
 
   <!-- SaleforceOxletauto -->
-  <div class="cat" style="margin-top:30px"><div class="icn">📊</div>
-    <h3><span class="th-only">แดชบอร์ดยอดขายทีมเซลล์</span><span class="en-only">Sales Team Dashboard</span></h3><div class="ln"></div></div>
-  <div class="grid">
+  <details class="appacc">
+    <summary class="appacc-head"><img class="appacc-thumb" src="img/sf-dashboard.png" alt="" loading="lazy"><span class="appacc-tt"><b>Oxlet Sales Dashboard</b><i>Django · แดชบอร์ดยอดขาย — ดึง Google Sheets</i></span><span class="appacc-chev">⌄</span></summary>
+    <div class="grid">
     <div class="proj wide">
       <a class="app-shot" href="img/sf-dashboard.png" target="_blank" rel="noopener"><span class="badge">Django</span><img src="img/sf-dashboard.png" loading="lazy" alt="Oxlet Sales executive dashboard with KPIs and charts"><span class="zoom">⤢ full</span></a>
       <div class="top"><h4>Oxlet Sales Dashboard</h4><span class="live"><span class="pulse"></span>Live</span></div>
@@ -568,11 +589,12 @@
     <figure><img src="img/sf-leadcar.png" alt="Lead by car-model ranking" loading="lazy"></figure>
     <figure><img src="img/sf-overview2.png" alt="Deal value chart and pipeline" loading="lazy"></figure>
   </div>
+  </details>
 
   <!-- Showroom website -->
-  <div class="cat" style="margin-top:30px"><div class="icn">🌐</div>
-    <h3><span class="th-only">เว็บไซต์โชว์รูม (สาธารณะ)</span><span class="en-only">Public Showroom Website</span></h3><div class="ln"></div></div>
-  <div class="grid">
+  <details class="appacc">
+    <summary class="appacc-head"><img class="appacc-thumb" src="img/web-home.png" alt="" loading="lazy"><span class="appacc-tt"><b>Oxlet Auto — Showroom Website</b><i>Django · เว็บโชว์รูม + AI Chat (Gemini)</i></span><span class="appacc-chev">⌄</span></summary>
+    <div class="grid">
     <div class="proj wide">
       <a class="app-shot" href="img/web-home.png" target="_blank" rel="noopener"><span class="badge">Django</span><img src="img/web-home.png" loading="lazy" alt="Oxlet Auto public showroom homepage"><span class="zoom">⤢ full</span></a>
       <div class="top"><h4>Oxlet Auto — Showroom Website</h4><span class="live"><span class="pulse"></span>Live</span></div>
@@ -591,11 +613,12 @@
     <figure><img src="img/web-cars.png" alt="Car listing grid with filters" loading="lazy"></figure>
     <figure><img src="img/web-detail.png" alt="Car detail page" loading="lazy"></figure>
   </div>
+  </details>
 
   <!-- Tracking — real-workflow edition -->
-  <div class="cat" style="margin-top:30px"><div class="icn">🏷️</div>
-    <h3><span class="th-only">ระบบติดตามรถ — เวอร์ชัน workflow จริง</span><span class="en-only">Car Tracking — Real-Workflow Edition</span></h3><div class="ln"></div></div>
-  <div class="grid">
+  <details class="appacc">
+    <summary class="appacc-head"><img class="appacc-thumb" src="img/trk-dashboard.png" alt="" loading="lazy"><span class="appacc-tt"><b>Oxlet Tracking — 16-Step Pipeline</b><i>Django · ติดตามรถ 16 สเตป / 5 เฟส</i></span><span class="appacc-chev">⌄</span></summary>
+    <div class="grid">
     <div class="proj wide">
       <a class="app-shot" href="img/trk-dashboard.png" target="_blank" rel="noopener"><span class="badge">Django</span><img src="img/trk-dashboard.png" loading="lazy" alt="Tracking dashboard showing 16 steps across 5 phases"><span class="zoom">⤢ full</span></a>
       <div class="top"><h4>Oxlet Tracking — 16-Step Pipeline</h4></div>
@@ -614,6 +637,7 @@
     <figure><img src="img/trk-kanban.png" alt="Kanban stage board (16 steps)" loading="lazy"></figure>
     <figure><img src="img/trk-scan.png" alt="Mobile QR-scan stage change" loading="lazy"></figure>
   </div>
+  </details>
 </section>
 
 <!-- ============ EXPERIENCE ============ -->
