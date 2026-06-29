@@ -186,6 +186,14 @@
   .app-gallery img{aspect-ratio:16/10;object-position:top center}
   @media(max-width:520px){.app-gallery{grid-template-columns:1fr}}
 
+  /* how-it-works flow line */
+  .flow{margin:2px 0 14px;padding:11px 14px;background:var(--bg-soft);border:1px solid var(--border);
+    border-radius:12px;font-size:12.5px;line-height:1.95;color:var(--text)}
+  .flow .k{font-size:10px;font-weight:800;letter-spacing:.5px;color:#fff;background:var(--grad);
+    border-radius:6px;padding:3px 8px;font-family:'JetBrains Mono',monospace;margin-right:9px;white-space:nowrap}
+  .flow i{color:var(--accent);font-weight:800;font-style:normal;margin:0 6px}
+  .flow b{color:var(--text);font-weight:700}
+
   /* about n8n panel */
   .n8n-about{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:26px;position:relative;overflow:hidden}
   .n8n-about::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:#ea4b71}
@@ -514,6 +522,7 @@
       <div class="top"><h4>Oxlet Auto — Car Tracking System</h4></div>
       <p><span class="th-only block">ระบบติดตามรถมือสองครบวงจร ตั้งแต่ <b style="color:var(--text)">รถเข้า → ทำสภาพ → ขึ้นโชว์ → ขาย</b> — gen <b style="color:var(--text)">Car Code + QR</b> แปะหน้ารถ คนงานสแกนเปลี่ยนสเตปบนมือถือ (แนบรูป/วิดีโอ) บันทึกต้นทุน/กำไรต่อคัน (P&amp;L), จอง/ลูกค้า, คลังอะไหล่, อู่นอก, <b style="color:var(--text)">Dashboard ผู้บริหาร</b> แยกสาขา + วัด T2L และแจ้งเตือนผ่าน LINE · ระบบสิทธิ์ <b style="color:var(--text)">6 บทบาท</b></span>
       <span class="en-only block">A full second-hand-car tracking system from <b style="color:var(--text)">intake → recon → showroom → sold</b> — auto-generates a <b style="color:var(--text)">Car Code + QR</b> for each car; workers scan to advance stages on mobile (with photo/video), logging per-car cost &amp; profit (P&amp;L), bookings/customers, parts inventory, sublet jobs, a <b style="color:var(--text)">branch-split executive dashboard</b> with T2L metrics, and LINE alerts · <b style="color:var(--text)">6-role</b> permission system.</span></p>
+      <div class="flow"><span class="k">FLOW</span><span class="th-only">รถเข้า <i>→</i> ระบบ gen <b>Car Code + QR</b> แปะหน้ารถ <i>→</i> คนงานสแกน QR เปลี่ยนสเตป (แนบรูป/วิดีโอ) <i>→</i> บันทึก DB + คิดต้นทุน/กำไร <i>→</i> Dashboard อัปเดตเรียลไทม์ + แจ้ง LINE <i>→</i> วัด T2L รายคัน</span><span class="en-only">Intake <i>→</i> system generates <b>Car Code + QR</b> on the car <i>→</i> worker scans QR to advance stage (photo/video) <i>→</i> save to DB + compute cost/profit <i>→</i> real-time dashboard + LINE alert <i>→</i> measure T2L per car</span></div>
       <div class="tags"><span class="tag">Django 5 + DRF</span><span class="tag g">PostgreSQL / SQLite</span><span class="tag p">QR + Mobile Scan</span><span class="tag">P&amp;L per car</span><span class="tag g">6 roles</span><span class="tag p">LINE API</span><span class="tag">Docker</span></div>
     </div>
   </div>
@@ -539,6 +548,7 @@
       <div class="top"><h4>Oxlet Sales Dashboard</h4><span class="live"><span class="pulse"></span>Live</span></div>
       <p><span class="th-only block">เว็บแอป Django ติดตามยอดขาย / Lead / Live ของทีมเซลล์ — ดึงข้อมูลจาก <b style="color:var(--text)">Google Sheets API</b> แบบ real-time (ไม่มี local DB), Dashboard ผู้บริหารสรุปยอดทั้งทีม + กราฟ <b style="color:var(--text)">Chart.js</b> (Lead / จอง-ปล่อย / Pipeline / Deal Value), หน้าส่วนตัวเซลล์รายคนผ่าน URL token, จัดอันดับรุ่นรถยอดนิยม, ส่ง <b style="color:var(--text)">LINE Flex</b> สรุป pipeline · Deploy บน <b style="color:var(--text)">Vercel</b> + cron ทุก 1 นาทีผ่าน n8n</span>
       <span class="en-only block">A Django app tracking the sales team's sales / leads / live activity — pulls from the <b style="color:var(--text)">Google Sheets API</b> in real time (no local DB). Executive dashboard with team-wide rollups + <b style="color:var(--text)">Chart.js</b> graphs (leads / bookings-releases / pipeline / deal value), per-seller private pages via URL token, top-car-model ranking, and <b style="color:var(--text)">LINE Flex</b> pipeline summaries · deployed on <b style="color:var(--text)">Vercel</b> with a 1-min cron via n8n.</span></p>
+      <div class="flow"><span class="k">FLOW</span><span class="th-only">n8n cron ยิงทุก <b>1 นาที</b> <i>→</i> Django ดึง <b>Google Sheets</b> real-time <i>→</i> คำนวณยอดขาย/Pipeline/Deal Value รายเซลล์-ทีม <i>→</i> render Dashboard (Chart.js) <i>→</i> ส่ง <b>LINE Flex</b> สรุปให้ทีม/ผู้บริหาร</span><span class="en-only">n8n cron every <b>1 min</b> <i>→</i> Django pulls <b>Google Sheets</b> live <i>→</i> compute sales/pipeline/deal value per seller &amp; team <i>→</i> render dashboard (Chart.js) <i>→</i> push <b>LINE Flex</b> summary to team/execs</span></div>
       <div class="tags"><span class="tag">Django</span><span class="tag g">Google Sheets API</span><span class="tag p">Chart.js</span><span class="tag">Token auth</span><span class="tag g">LINE Flex</span><span class="tag p">Vercel</span><span class="tag">WhiteNoise</span></div>
     </div>
   </div>
@@ -561,6 +571,7 @@
       <div class="top"><h4>Oxlet Auto — Showroom Website</h4><span class="live"><span class="pulse"></span>Live</span></div>
       <p><span class="th-only block">เว็บไซต์ขายรถมือสองสาธารณะ (clone oxletauto.co.th) — <b style="color:var(--text)">ประกาศขายรถ 160+ คัน</b> พร้อมฟิลเตอร์ยี่ห้อ/รุ่น/งบ, หน้ารายละเอียดรถ + แกลเลอรีรูป + คำนวณค่างวด, <b style="color:var(--text)">เปรียบเทียบรถ</b>, ทะเบียนสวย, โปรโมชัน, รีวิว + ดึง <b style="color:var(--text)">Google Reviews</b>, ฟอร์มเก็บ Lead และ <b style="color:var(--text)">AI Chat (Gemini)</b> ตอบลูกค้า · หลังบ้านจัดการรถ + SEO slug · Deploy ด้วย <b style="color:var(--text)">Docker + Caddy</b></span>
       <span class="en-only block">A public used-car dealership site (clone of oxletauto.co.th) — <b style="color:var(--text)">160+ car listings</b> with brand/model/budget filters, detail pages with image galleries + installment calculator, <b style="color:var(--text)">car comparison</b>, premium license plates, promotions, reviews pulling <b style="color:var(--text)">Google Reviews</b>, a lead-capture form and an <b style="color:var(--text)">AI chat (Gemini)</b> assistant · management backend + SEO slugs · deployed with <b style="color:var(--text)">Docker + Caddy</b>.</span></p>
+      <div class="flow"><span class="k">FLOW</span><span class="th-only">ลูกค้าเปิดเว็บ <i>→</i> ค้นหา/กรอง/เทียบรถจาก DB <i>→</i> เปิดหน้ารายละเอียด + คำนวณค่างวด <i>→</i> ถาม <b>AI Chat (Gemini)</b> หรือกรอกฟอร์ม <i>→</i> เก็บ Lead เข้า DB ให้เซลล์ตาม</span><span class="en-only">Visitor opens site <i>→</i> search/filter/compare cars from DB <i>→</i> open detail page + installment calc <i>→</i> ask <b>AI chat (Gemini)</b> or submit form <i>→</i> lead saved to DB for sales follow-up</span></div>
       <div class="tags"><span class="tag">Django</span><span class="tag g">160+ listings</span><span class="tag p">AI Chat · Gemini</span><span class="tag">Compare</span><span class="tag g">Google Reviews</span><span class="tag p">Docker + Caddy</span><span class="tag">SEO</span></div>
     </div>
   </div>
@@ -583,6 +594,7 @@
       <div class="top"><h4>Oxlet Tracking — 16-Step Pipeline</h4></div>
       <p><span class="th-only block">เวอร์ชัน <b style="color:var(--text)">tracking-only</b> ที่รีไฟน์ตาม <b style="color:var(--text)">เวิร์กโฟลว์หน้างานจริง</b> — แตกเป็น <b style="color:var(--text)">16 สเตป ใน 5 เฟส</b> (รับเข้า · ทำสภาพ · ตรวจ QC · <b style="color:var(--text)">ทะเบียน</b> · ขาย) เพิ่มบทบาท <b style="color:var(--text)">ฝ่ายทะเบียน</b> สำหรับโอน/ภาษี/พ.ร.บ./ป้าย · เปลี่ยนสเตปผ่านสแกน QR เท่านั้น (7 บทบาท) · วัด T2L + ธงรถค้างนาน</span>
       <span class="en-only block">A <b style="color:var(--text)">tracking-only</b> edition refined to the <b style="color:var(--text)">real shop-floor workflow</b> — broken into <b style="color:var(--text)">16 steps across 5 phases</b> (intake · recon · QC · <b style="color:var(--text)">registration</b> · sale), adding a dedicated <b style="color:var(--text)">Registration role</b> for transfer/tax/insurance/plates · QR-scan-only stage changes (7 roles) · T2L metric + stuck-car flags.</span></p>
+      <div class="flow"><span class="k">FLOW</span><span class="th-only">เพิ่มรถ <i>→</i> gen QR <i>→</i> สแกนเลื่อนทีละสเตป (<b>16 สเตป / 5 เฟส</b>) <i>→</i> <b>ฝ่ายทะเบียน</b> จัดการโอน/ภาษี/พ.ร.บ./ป้าย <i>→</i> ขาย <i>→</i> วัด T2L + ธงรถค้างนาน</span><span class="en-only">Add car <i>→</i> gen QR <i>→</i> scan to advance step-by-step (<b>16 steps / 5 phases</b>) <i>→</i> <b>registration</b> handles transfer/tax/insurance/plate <i>→</i> sold <i>→</i> T2L + stuck-car flags</span></div>
       <div class="tags"><span class="tag">Django</span><span class="tag g">16 steps / 5 phases</span><span class="tag p">7 roles</span><span class="tag">Registration role</span><span class="tag g">QR scan</span><span class="tag p">T2L</span></div>
     </div>
   </div>
